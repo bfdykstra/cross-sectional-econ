@@ -1,0 +1,36 @@
+---
+title: "RMarkdown Demo"
+author: "Rob Hicks"
+date: "August 25, 2016"
+output: pdf_document
+---
+
+# My Demo Header
+
+This is an example paragraph. ldaskj alsdfja sdkjflkadsjlk; das
+ldfldsjlka sdjflkadfj.
+
+More stuff
+
+* item 1
+* item 2
+
+```{r}
+library(foreign)
+auto = read.csv("http://rlhick.people.wm.edu/econ407/data/auto.csv")
+```
+
+Wow. Amazing
+
+$$
+E = MC^2
+$$
+
+```{r, echo=FALSE}
+ols.lm = lm(price ~ foreign, data = auto)
+summary(ols.lm)
+```
+
+# RMarkdown Installation
+
+In `Rstudio`, click on new file, and choose `R Markdown...`.  If you haven't already installed R Markdown, this will install it.  Then you can open my sample file and run it to proce `RMarkdown_demo.pdf`.

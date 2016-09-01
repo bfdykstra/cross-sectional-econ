@@ -1,0 +1,85 @@
+---
+title: "Reproducible Research and ECON 407 Problem Sets"
+output: pdf_document
+---
+
+From [Wikipedia](https://en.wikipedia.org/wiki/Reproducibility#
+Reproducible_research), reproducible research is defined as:
+
+
+>The term reproducible research refers to the idea that the ultimate product of
+academic research is the paper **along with** the full computational
+environment used to produce the results in the paper such as the code, data,
+etc. that can be used to reproduce the results and create new work based on the
+research.
+
+The reproducible research movement (especially for the statistical sciences)
+takes this a step further by advocating for dynamic documents. The idea is
+that a researcher should provide a file (the dynamic document) that can execute
+the statistical analysis, generate figures, and contains accompanying text
+narrative.  This file can be executed to produce the **academic paper**.  The
+researcher shares this file with other researchers rather than the only the
+paper.  It is my view that within 20 years nearly every scientific journal in
+applied statistics will require this approach.
+
+This document shows how to use `RMarkdown`
+and markdown syntax.  The idea behind `RMarkdown` is that you share your research
+by sharing your program file.  This file performs the full suite of statistical
+analysis and can produce the pdf or MS Word document describing your analysis.
+You will use this workflow for producing pdf or word documents for class
+assignments.
+
+For every problem set, you will turn in
+
+* The `Rmarkdown` file containing all commands and written text that produces
+your problem set responses. [the `R` file]
+* A hardcopy of the pdf version produced after running your do file
+[the hardcopy]
+* The only exception to this rule is for questions involving proofs or other
+equation heavy assigments where handwritten responses can be
+attached to the hardcopy problem set response.
+
+
+# Some Features of `RMarkdown`
+RMarkdown allows for most features of
+[Markdown](https://daringfireball.net/projects/markdown/syntax),
+which is a liteweight and readable **text-based** language that allows
+files to be easily converted to nice looking pdf, html, or even word
+documents. Some features you will likely want to use:
+
+* Equations and Math Notation using latex math
+* Headers
+* Emphasizing text (bold and italics)
+* Numeric and bulletted lists
+* Turning stata output on and off
+
+# A simple example analysis using `Rmarkdown`
+
+Below we'll be modeling the following regression equation for cars back in the day:
+
+$$
+price_i = \beta_0 + \beta_1 mpg_i + \beta_2 foreign_i + \epsilon_i
+$$
+
+## Load Data and Summarize
+```{r}
+auto = read.csv("http://rlhick.people.wm.edu/econ407/data/auto.csv")
+summary(auto)
+hist(auto$price)
+```
+
+
+### Regression Model
+
+Here are the regression results:
+
+```{r}
+summary(lm(price~mpg+foreign,data=auto))
+```
+
+### Discussion
+
+Looks like back in the day, foreign cars sell for more!
+
+## Document Source
+This document was written and generated entirely within `R`.
